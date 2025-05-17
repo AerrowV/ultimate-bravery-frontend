@@ -2,7 +2,7 @@ import React from 'react';
 import ReactDOM from 'react-dom/client';
 import { createBrowserRouter, RouterProvider } from 'react-router-dom';
 
-import Home from './Home.jsx';
+import Home from './router/Home.jsx';
 import Games from './router/Games.jsx';
 import Guns from './router/Guns.jsx';
 import Maps from './router/Maps.jsx';
