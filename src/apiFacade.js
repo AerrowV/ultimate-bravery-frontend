@@ -34,7 +34,7 @@ function apiFacade() {
 
   const fetchData = () => {
     const options = makeOptions("GET", true);
-    return fetch(BASE_URL + "games", options).then(handleHttpErrors);
+    return fetch(BASE_URL, options).then(handleHttpErrors);
   };
 
   const makeOptions = (method, addToken, body) => {
