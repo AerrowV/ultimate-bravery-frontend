@@ -1,4 +1,4 @@
-const BASE_URL = import.meta.env.VITE_API_URL;
+const BASE_URL = 'https://ultimatebravery.yumiya.dk/api/';
 const LOGIN_ENDPOINT = "auth/login";
 
 function handleHttpErrors(res) {
