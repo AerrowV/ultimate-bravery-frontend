@@ -1,31 +1,36 @@
 import { useEffect, useState } from "react";
 import facade from "../apiFacade";
 
-function LoggedIn() {
-  const [games, setGames] = useState([]);
-  const [error, setError] = useState("");
+function LoggedIn({ LoggedIn }) {
+  const [dataFromServer, setDataFromServer] = useState("Loading...");
 
   useEffect(() => {
-    facade.fetchData()
-      .then(data => setGames(data))
-      .catch(err => setError("Could not fetch games: " + err.status));
+    facade
+      .fetchData()
+      .then((data) => {
+        if (Array.isArray(data)) {
+          const gameNames = data.map((game) => game.name).join(", ");
+          setDataFromServer(gameNames);
+        } else if (typeof data === "object") {
+          setDataFromServer(JSON.stringify(data));
+        } else {
+          setDataFromServer(data);
+        }
+      })
+      .catch((err) => setDataFromServer("Error: " + err.status));
   }, []);
 
   return (
-<div className="logged-in-wrapper">
-  <div className="gaming-bg"></div>
+    <div className="logged-in-wrapper">
+      <div className="gaming-bg"></div>
 
-  <div className="container">
-    <h2>Available Games</h2>
-    {error && <p>{error}</p>}
-    <ul>
-      {games.map(game => (
-        <li key={game.id}>{game.name}</li>
-      ))}
-    </ul>
-  </div>
-</div>
-
+      <div className="container">
+        <h2>Available Games</h2>
+        <h3 style={{ whiteSpace: "pre-line" }}>
+          {dataFromServer.split(", ").join("\n")}
+        </h3>
+      </div>
+    </div>
   );
 }
 
