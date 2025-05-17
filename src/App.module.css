@@ -1,0 +1,36 @@
+.container {
+  display: flex;
+  height: 100vh;
+  overflow: hidden;
+}
+
+.box {
+  flex: 1;
+  background-size: cover;
+  background-position: center;
+  transition: transform 0.3s ease;
+  text-decoration: none;
+  color: white;
+  position: relative;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.box:hover {
+  transform: scale(1.05);
+  z-index: 1;
+}
+
+.overlay {
+  background-color: rgba(0, 0, 0, 0.4); /* mørk gennemsigtig baggrund */
+  padding: 1rem 2rem;
+  border-radius: 12px;
+}
+
+.title {
+  font-size: 2rem;
+  font-weight: bold;
+  text-align: center;
+  margin: 0;
+}
