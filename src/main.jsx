@@ -8,7 +8,6 @@ import Guns from './router/Guns.jsx';
 import Maps from './router/Maps.jsx';
 import Strategies from './router/Strategies.jsx';
 import ErrorPage from './components/ErrorPage.jsx';
-
 import './index.css';
 
 const router = createBrowserRouter([
