@@ -6,7 +6,7 @@ const Games = () => {
   const [error, setError] = useState("");
 
 useEffect(() => {
-  fetch(`${import.meta.env.VITE_API_URL}games/`)
+  fetch(`https://ultimatebravery.yumiya.dk/api/games/`)
     .then(async (res) => {
       const text = await res.text();
       try {
