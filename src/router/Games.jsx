@@ -5,20 +5,23 @@ const Games = () => {
   const [games, setGames] = useState([]);
   const [error, setError] = useState("");
 
-fetch(`https://ultimatebravery.yumiya.dk/api/games/`)
-  .then(async (res) => {
-    console.log("Status:", res.status);
-    const text = await res.text();
-    console.log("Raw Response:", text);
-    try {
-      const json = JSON.parse(text);
-      setGames(json);
-    } catch (err) {
-      console.error("Failed to parse JSON:", text);
-      setError("Invalid JSON from backend");
-    }
-  })
-  .catch((err) => setError("Fetch failed: " + err.message));
+useEffect(() => {
+  fetch(`https://ultimatebravery.yumiya.dk/api/games/`)
+    .then(async (res) => {
+      console.log("Status:", res.status);
+      const text = await res.text();
+      console.log("Raw Response:", text);
+      try {
+        const json = JSON.parse(text);
+        setGames(json);
+      } catch (err) {
+        console.error("Failed to parse JSON:", text);
+        setError("Invalid JSON from backend");
+      }
+    })
+    .catch((err) => setError("Fetch failed: " + err.message));
+}, []);
+
 
   if (error) return <p>Error: {error}</p>;
   if (!games.length) return <p>Loading games...</p>;
