@@ -4,15 +4,20 @@ const Games = () => {
   const [games, setGames] = useState([]);
   const [error, setError] = useState("");
 
-  useEffect(() => {
-    fetch(`${import.meta.env.VITE_API_URL}games`)
-      .then((res) => {
-        if (!res.ok) throw new Error("Failed to fetch games");
-        return res.json();
-      })
-      .then((data) => setGames(data))
-      .catch((err) => setError(err.message));
-  }, []);
+useEffect(() => {
+  fetch(`${import.meta.env.VITE_API_URL}games`)
+    .then(async (res) => {
+      const text = await res.text();
+      try {
+        const json = JSON.parse(text);
+        setGames(json);
+      } catch (err) {
+        console.error("Failed to parse JSON:", text);
+        setError("Invalid JSON from backend");
+      }
+    })
+    .catch((err) => setError("Fetch failed: " + err.message));
+}, []);
 
   if (error) return <p>Error: {error}</p>;
   if (!games.length) return <p>Loading games...</p>;
