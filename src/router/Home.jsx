@@ -10,6 +10,14 @@ export default function Home() {
       <br/>
       <h2>Vision</h2>
       <p>Ultimate Bravery API er en sjov og kreativ strategi-generator til multiplayer spil som CS2, LoL og lignende. Brugere vælger et spil, og API’et returnerer tre forskellige strategier til næste runde - en seriøs, en gennemsnitlig og en troll.</p>
+        
+      <a 
+        href="https://ultimatebravery.yumiya.dk/api/routes"
+        target="_blank"
+        rel="noopener noreferrer"
+      >
+        <button>API ROUTES</button>
+      </a>
     </div>
   );
 }
