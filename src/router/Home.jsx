@@ -1,22 +1,28 @@
 import { Link } from "react-router-dom";
+import styles from "./Home.module.css";
 
 export default function Home() {
   return (
-    <div className="home">
-      <h1>WELCOME TO ULTIMATE BRAVERY</h1>
+    <div className={styles.container}>
+      <h1 className={styles.title}>WELCOME TO ULTIMATE BRAVERY</h1>
       <Link to="/games">
-        <button>BEGIN NOW</button>
+        <button className={styles.button}>BEGIN NOW</button>
       </Link>
-      <br/>
-      <h2>Vision</h2>
-      <p>Ultimate Bravery API er en sjov og kreativ strategi-generator til multiplayer spil som CS2, LoL og lignende. Brugere vælger et spil, og API’et returnerer tre forskellige strategier til næste runde - en seriøs, en gennemsnitlig og en troll.</p>
-        
-      <a 
+      <br />
+      <h2 className={styles.title}>Vision</h2>
+      <p className={styles.subtitle}>
+        Ultimate Bravery API is a fun and creative strategy generator for
+        multiplayer games like CS2, LoL, and the like. Users choose a game, and
+        the API returns three different strategies for the next round - a
+        serious one, an average one, and a troll one.
+      </p>
+
+      <a
         href="https://ultimatebravery.yumiya.dk/api/routes"
         target="_blank"
         rel="noopener noreferrer"
       >
-        <button>API ROUTES</button>
+        <button className={styles.button}>API ROUTES</button>
       </a>
     </div>
   );
