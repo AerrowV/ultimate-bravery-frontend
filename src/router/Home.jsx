@@ -7,10 +7,9 @@ export default function Home() {
       <h1 className={styles.title}>WELCOME TO ULTIMATE BRAVERY</h1>
       <br />
       <p className={styles.subtitle}>
-        Ultimate Bravery API is a fun and creative strategy generator for
-        multiplayer games like CS2, LoL and the like. Users choose a game, and
-        the API returns three different strategies for the next round - a
-        serious one, an average one, and a troll one.
+        ARE YOU TIRED OF PLAYING THE SAME OLD BORING META STRATEGIES?
+        ULTIMATE BRAVERY GOT YOU COVERED. 
+        CHOOSE SOME FILTERS AND THEN GET A TOTALLY DIFFRENT PLAY EXPERIENCE, LIKE YOU NEVER TRIED BEFORE.
       </p>
 
       <Link to="/games">
