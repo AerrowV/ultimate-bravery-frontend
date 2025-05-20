@@ -3,115 +3,115 @@ import styles from "./Routes.module.css";
 const routes = [
   {
     method: "GET",
-    endpoint: "/api/games",
+    endpoint: "/games",
     description: "List all supported games",
     access: "ANYONE"
   },
   {
     method: "POST",
-    endpoint: "/api/games",
+    endpoint: "/games",
     description: "Add a new game",
     access: "ADMIN"
   },
   {
     method: "DELETE",
-    endpoint: "/api/game/{id}",
+    endpoint: "/game/{id}",
     description: "Delete a specific game from the list",
     access: "ADMIN"
   },
   {
     method: "GET",
-    endpoint: "/api/games/strategies",
+    endpoint: "/games/strategies",
     description: "Games all strategies",
     access: "ANYONE"
   },
   {
     method: "GET",
-    endpoint: "/api/games/{id}/strategies/",
+    endpoint: "/games/{id}/strategies/",
     description: "Get all strategies for a specific game",
     access: "ANYONE"
   },
   {
     method: "GET",
-    endpoint: "/api/games/{id}/map/{id}/strategies/random/",
+    endpoint: "/games/{id}/map/{id}/strategies/random/",
     description: "Get a random strategy for a specific map in a specific game",
     access: "USER"
   },
   {
     method: "GET",
-    endpoint: "/api/games/{id}/map/{id}/strategies/type/random",
+    endpoint: "/games/{id}/map/{id}/strategies/type/random",
     description: "Get a strategy of a specific type",
     access: "USER"
   },
   {
     method: "POST",
-    endpoint: "/api/games/{id}/map/{id}/strategies/",
+    endpoint: "/games/{id}/map/{id}/strategies/",
     description: "Add a new strategy",
     access: "ADMIN"
   },
   {
     method: "DELETE",
-    endpoint: "/api/games/{id}/map/{id}/strategies/{id}",
+    endpoint: "/games/{id}/map/{id}/strategies/{id}",
     description: "Delete a strategy",
     access: "ADMIN"
   },
   {
     method: "GET",
-    endpoint: "/api/games/{id}/map/{id}/guns/{id}",
+    endpoint: "/games/{id}/map/{id}/guns/{id}",
     description: "Get a specific gun",
     access: "ADMIN"
   },
   {
     method: "DELETE",
-    endpoint: "/api/games/{id}/map/{id}/guns/{id}",
+    endpoint: "/games/{id}/map/{id}/guns/{id}",
     description: "Delete a gun",
     access: "ADMIN"
   },
   {
     method: "POST",
-    endpoint: "/api/games/{id}/map/{id}/guns/",
+    endpoint: "/games/{id}/map/{id}/guns/",
     description: "Add a new gun",
     access: "ADMIN"
   },
   {
     method: "GET",
-    endpoint: "/api/games/{id}/map/{id}",
+    endpoint: "/games/{id}/map/{id}",
     description: "Get a map",
     access: "USER"
   },
   {
     method: "POST",
-    endpoint: "/api/games/{id}/map/",
+    endpoint: "/games/{id}/map/",
     description: "Add a new map",
     access: "ADMIN"
   },
   {
     method: "DELETE",
-    endpoint: "/api/games/{id}/map/{id}",
+    endpoint: "/games/{id}/map/{id}",
     description: "Delete a map",
     access: "ADMIN"
   },
   {
     method: "GET",
-    endpoint: "/api/games/{id}/map/{id}/guns/random/",
+    endpoint: "/games/{id}/map/{id}/guns/random/",
     description: "Get a random gun",
     access: "USER"
   },
   {
     method: "POST",
-    endpoint: "/api/games/auth/login",
+    endpoint: "/games/auth/login",
     description: "Login to an account",
     access: "ANYONE"
   },
   {
     method: "POST",
-    endpoint: "/api/games/auth/register",
+    endpoint: "/games/auth/register",
     description: "Register an account",
     access: "ANYONE"
   },
   {
     method: "GET",
-    endpoint: "/api/routes",
+    endpoint: "/routes",
     description: "Get all endpoints",
     access: "ANYONE"
   }
