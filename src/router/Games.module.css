@@ -3,6 +3,13 @@
   height: 100vh;
   overflow: hidden;
 }
+.container {
+  display: flex;
+  height: 100vh;
+  overflow: hidden;
+  margin-left: 0vw;
+}
+
 
 .box {
   flex: 1;
@@ -15,22 +22,35 @@
   display: flex;
   align-items: center;
   justify-content: center;
+  clip-path: polygon(0 0, 80% 0, 100% 100%, 20% 100%);
+  margin-right: -10vw;
+  z-index: 1;
+}
+
+.box:first-child {
+  clip-path: polygon(0 0, 80% 0, 100% 100%, 0 100%);
+}
+
+.box:last-child {
+  clip-path: polygon(0 0, 100% 0, 100% 100%, 20% 100%);
+  margin-right: 0;
 }
 
 .box:hover {
   transform: scale(1.05);
-  z-index: 1;
+  z-index: 2;
 }
 
 .overlay {
-  background-color: rgba(0, 0, 0, 0.4); /* mørk gennemsigtig baggrund */
+  background-color: rgba(0, 0, 0, 0.5);
   padding: 1rem 2rem;
   border-radius: 12px;
+  text-align: center;
+  z-index: 1;
 }
 
 .title {
   font-size: 2rem;
   font-weight: bold;
-  text-align: center;
   margin: 0;
 }
