@@ -1,9 +1,10 @@
-body, html {
+body, html, #root {
   margin: 0;
   padding: 0;
   height: 100%;
   font-family: 'Orbitron', sans-serif;
   color: white;
+  overflow: hidden;
 }
 
 .gaming-bg {
