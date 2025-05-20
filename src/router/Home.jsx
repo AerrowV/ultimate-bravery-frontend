@@ -4,7 +4,8 @@ import styles from "./Home.module.css";
 export default function Home() {
   return (
     <div className={styles.container}>
-      <h1 className={styles.title}>WELCOME TO ULTIMATE BRAVERY</h1>
+      <h1 className={styles.title}>WELCOME TO
+        ULTIMATE BRAVERY</h1>
       <Link to="/games">
         <button className={styles.button}>BEGIN NOW</button>
       </Link>
