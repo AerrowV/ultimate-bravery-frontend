@@ -6,6 +6,7 @@ import Home from './router/Home.jsx';
 import Games from './router/Games.jsx';
 import Guns from './router/Guns.jsx';
 import Maps from './router/Maps.jsx';
+import Routes from './router/Routes.jsx';
 import Strategies from './router/Strategies.jsx';
 import ErrorPage from './components/ErrorPage.jsx';
 
@@ -30,6 +31,10 @@ const router = createBrowserRouter([
   {
     path: "/strategies",
     element: <Strategies />
+  },
+  {
+    path: "/routes",
+    element: <Routes />
   }
 ]);
 

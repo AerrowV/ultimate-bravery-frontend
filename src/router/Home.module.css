@@ -60,3 +60,17 @@ body {
     width: 100%;
   }
 }
+
+.linkText {
+  color: #1e90ff;
+  text-decoration: underline;
+  cursor: pointer;
+  font-weight: bold;
+  font-family: "Orbitron", sans-serif;
+  transition: color 0.2s;
+  text-decoration: none;
+}
+
+.linkText:hover {
+  color: #00bfff;
+}
