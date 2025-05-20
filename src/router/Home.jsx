@@ -16,6 +16,10 @@ export default function Home() {
       <Link to="/games">
         <button className={styles.button}>BEGIN NOW</button>
       </Link>
+      <br/>
+      <Link to="/routes" className={styles.linkText}>
+        API ROUTES
+      </Link>
     </div>
   );
 }
