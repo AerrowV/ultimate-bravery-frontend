@@ -4,27 +4,18 @@ import styles from "./Home.module.css";
 export default function Home() {
   return (
     <div className={styles.container}>
-      <h1 className={styles.title}>WELCOME TO
-        ULTIMATE BRAVERY</h1>
-      <Link to="/games">
-        <button className={styles.button}>BEGIN NOW</button>
-      </Link>
+      <h1 className={styles.title}>WELCOME TO ULTIMATE BRAVERY</h1>
       <br />
-      <h2 className={styles.title}>Vision</h2>
       <p className={styles.subtitle}>
         Ultimate Bravery API is a fun and creative strategy generator for
-        multiplayer games like CS2, LoL, and the like. Users choose a game, and
+        multiplayer games like CS2, LoL and the like. Users choose a game, and
         the API returns three different strategies for the next round - a
         serious one, an average one, and a troll one.
       </p>
 
-      <a
-        href="https://ultimatebravery.yumiya.dk/api/routes"
-        target="_blank"
-        rel="noopener noreferrer"
-      >
-        <button className={styles.button}>API ROUTES</button>
-      </a>
+      <Link to="/games">
+        <button className={styles.button}>BEGIN NOW</button>
+      </Link>
     </div>
   );
 }

@@ -23,7 +23,7 @@
 }
 
 .overlay {
-  background-color: rgba(0, 0, 0, 0.4); /* mørk gennemsigtig baggrund */
+  background-color: rgba(0, 0, 0, 0.4);
   padding: 1rem 2rem;
   border-radius: 12px;
 }
