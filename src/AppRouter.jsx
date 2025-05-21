@@ -11,6 +11,7 @@ import ErrorPage from "./components/ErrorPage.jsx";
 import Login from "./components/LogIn.jsx";
 import LoggedIn from "./components/LoggedIn.jsx";
 import facade from "./apiFacade.js";
+import GameDetails from "./router/GameDetails.jsx"
 
 function AppRouter() {
   const [loggedIn, setLoggedIn] = useState(facade.loggedIn());
@@ -34,6 +35,10 @@ function AppRouter() {
     {
       path: "/games",
       element: <Games />
+    },
+    {
+      path: "/games/1",
+      element: <GameDetails />
     },
     {
       path: "/guns",
