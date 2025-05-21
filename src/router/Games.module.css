@@ -2,14 +2,8 @@
   display: flex;
   height: 100vh;
   overflow: hidden;
-}
-.container {
-  display: flex;
-  height: 100vh;
-  overflow: hidden;
   margin-left: 0vw;
 }
-
 
 .box {
   flex: 1;
@@ -25,15 +19,23 @@
   clip-path: polygon(0 0, 80% 0, 100% 100%, 20% 100%);
   margin-right: -10vw;
   z-index: 1;
+  overflow: hidden;
 }
 
-.box:first-child {
-  clip-path: polygon(0 0, 80% 0, 100% 100%, 0 100%);
+.box::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(0, 0, 0, 0.5);
+  transition: background-color 0.3s ease;
+  z-index: 0;
 }
 
-.box:last-child {
-  clip-path: polygon(0 0, 100% 0, 100% 100%, 20% 100%);
-  margin-right: 0;
+.box:hover::before {
+  background-color: rgba(0, 0, 0, 0.2);
 }
 
 .box:hover {
@@ -41,16 +43,70 @@
   z-index: 2;
 }
 
+.box::after {
+  content: "";
+  position: absolute;
+  top: 0;
+  right: -1px;
+  width: 2px;
+  height: 100%;
+  background: rgba(255, 255, 255, 0.2);
+  z-index: 2;
+  pointer-events: none;
+}
+
+.box:last-child::after {
+  display: none;
+}
+
+.box:first-child {
+  border-left: none;
+  clip-path: polygon(0 0, 80% 0, 100% 100%, 0 100%);
+}
+
+.box:last-child {
+  clip-path: polygon(0 0, 100% 0, 100% 100%, 20% 100%);
+  margin-right: 0;
+  border-right: none;
+}
+
 .overlay {
   background-color: rgba(0, 0, 0, 0.5);
   padding: 1rem 2rem;
   border-radius: 12px;
   text-align: center;
+  position: relative;
   z-index: 1;
 }
 
 .title {
-  font-size: 2rem;
-  font-weight: bold;
+  font-size: 2.5rem;
+  font-weight: 900;
   margin: 0;
+  color: #fff;
+  text-shadow: 0 0 10px rgba(255, 255, 255, 0.5),
+    0 0 20px rgba(255, 255, 255, 0.3), 0 0 30px rgba(0, 150, 255, 0.5);
+  letter-spacing: 1px;
+  transition: transform 0.3s ease, text-shadow 0.3s ease;
+}
+
+.box:hover .title {
+  transform: scale(1.05);
+  text-shadow: 0 0 15px rgba(255, 255, 255, 0.7),
+    0 0 25px rgba(0, 150, 255, 0.6), 0 0 40px rgba(0, 150, 255, 0.8);
+}
+
+.logo {
+  max-width: 60%;
+  max-height: 60%;
+  object-fit: contain;
+  z-index: 1;
+  position: relative;
+  transition: transform 0.3s ease, filter 0.3s ease;
+  filter: brightness(0.8) drop-shadow(0 0 5px rgba(255, 255, 255, 0.4));
+}
+
+.box:hover .logo {
+  transform: scale(1.05);
+  filter: brightness(1.1) drop-shadow(0 0 10px rgba(0, 150, 255, 0.7));
 }
