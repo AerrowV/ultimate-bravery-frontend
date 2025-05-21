@@ -27,7 +27,7 @@ const Games = () => {
   
   return (
     <div className={styles.container}>
-            <Header />
+      <Header />
       {games.map((game) => (
         <a
         key={game.id}
