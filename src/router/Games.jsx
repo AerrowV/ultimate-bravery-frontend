@@ -24,16 +24,17 @@ useEffect(() => {
 
 
   if (error) return <p>Error: {error}</p>;
+  if (!games.length) return <p>Loading games...</p>;
 
   return (
     <div className={styles.container}>
       {games.map((game) => (
         <a
-          key={game.id}
+        key={game.id}
           href={`/games/${game.id}`}
-          className={styles.box}
-          style={{ backgroundImage: `url("/images/${game.id}.jpg")` }}
-        >
+        className={styles.box}
+        style={{ backgroundImage: `url("/images/${game.id}.jpg")` }}
+      >
           <div className={styles.overlay}>
             <h2 className={styles.title}>{game.name}</h2>
           </div>
