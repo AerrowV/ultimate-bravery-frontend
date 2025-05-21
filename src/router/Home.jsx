@@ -19,6 +19,9 @@ export default function Home() {
       <Link to="/routes" className={styles.linkText}>
         API ROUTES
       </Link>
+            <br/>
+      <Link to="../login" className={styles.button}>Login</Link>
+      <Link to="/routes" className={styles.button}>Sign Up</Link>
     </div>
   );
 }
