@@ -1,33 +1,37 @@
 .userBox {
-  position: absolute;
+  position: fixed;
   top: 20px;
   right: 20px;
   display: flex;
   align-items: center;
   gap: 10px;
-  background: rgba(0, 0, 0, 0.5);
-  padding: 0.5rem 1rem;
-  border-radius: 8px;
+  background: rgba(0, 0, 0, 0.6);
+  padding: 0.6rem 1rem;
+  border-radius: 12px;
   color: #fff;
   font-weight: bold;
   font-family: "Orbitron", sans-serif;
   text-shadow: 1px 1px #000;
   z-index: 1000;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.5);
 }
 
-.logoutButton {
-  background-color: transparent;
-  border: 1px solid #fff;
-  color: #fff;
-  padding: 0.3rem 0.7rem;
-  border-radius: 5px;
-  cursor: pointer;
-  transition: background-color 0.2s, color 0.2s;
-  font-size: 0.9rem;
-}
-
-.logoutButton:hover {
-  background-color: #ff4d4d;
+.headerButton {
+  background: linear-gradient(145deg, #1e90ff, #00bfff);
+  border: none;
   color: white;
-  border-color: #ff4d4d;
+  padding: 0.5rem 1rem;
+  border-radius: 8px;
+  cursor: pointer;
+  font-size: 0.85rem;
+  font-weight: bold;
+  transition: transform 0.2s, box-shadow 0.2s;
+  box-shadow: 0 3px 8px rgba(0, 191, 255, 0.4);
+  font-family: "Orbitron", sans-serif;
+}
+
+.headerButton:hover {
+  transform: scale(1.05);
+  box-shadow: 0 6px 12px rgba(0, 191, 255, 0.6);
+  background: linear-gradient(145deg, #00bfff, #1e90ff);
 }
