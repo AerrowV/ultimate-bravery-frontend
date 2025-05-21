@@ -1,6 +1,7 @@
 import { Link, useNavigate } from "react-router-dom";
 import styles from "./Home.module.css";
 import facade from "../apiFacade";
+import Header from "../components/Header";
 
 export default function Home() {
     const username = facade.getUsername();
@@ -13,14 +14,7 @@ export default function Home() {
 
   return (
     <div className={styles.container}>
-      {username && (
-        <div className={styles.userBox}>
-          <span>👤 {username}</span>
-          <button className={styles.logoutButton} onClick={handleLogout}>
-            Logout
-          </button>
-        </div>
-      )}
+       <Header />
       <h1 className={styles.title}>WELCOME TO ULTIMATE BRAVERY</h1>
       <br />
       <p className={styles.subtitle}>

@@ -1,5 +1,6 @@
 import { useEffect, useState } from "react";
 import styles from "./Games.module.css";
+import Header from "../components/Header";
 
 const Games = () => {
   const [games, setGames] = useState([]);
@@ -27,6 +28,7 @@ const Games = () => {
 
   return (
     <div className={styles.container}>
+            <Header />
       {games.map((game) => (
         <a
         key={game.id}
