@@ -14,9 +14,9 @@ const mapNames = {
 };
 
 const typeImages = {
-  TROLL: "https://pbs.twimg.com/profile_images/1704835779875446784/MHatXc-y_400x400.jpg",
-  AVERAGE: "https://thumbnail.imgbin.com/25/25/2/imgbin-pepe-the-frog-gun-shows-in-the-united-states-firearm-weapon-weapon-pepe-the-frog-xHrJKCQ5uHtr2gr4SzN7c8k5v_t.jpg",
-  SERIOUS: "https://toppng.com/uploads/preview/295kib-1024x1096-jaded-neckbeard-pepe-gamer-pepe-11563122924pzktupwzzx.png",
+  TROLL: "/images/roulette/troll.png",
+  AVERAGE: "/images/roulette/average.png",
+  SERIOUS: "/images/roulette/serious.png",
 };
 
 const generateId = () => `${Date.now().toString(36)}-${Math.random().toString(36).substring(2)}`;
