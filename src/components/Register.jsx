@@ -15,16 +15,14 @@ function Register() {
     return lengthValid && hasCapital && hasSpecial;
   };
 
-  const validateusername = (username) => /^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(username);
-
   const performRegister = (evt) => {
     evt.preventDefault();
     setError("");
 
     const { username, password, confirmPassword } = registerCredentials;
 
-    if (!validateusername(username)) {
-      setError("Please enter a valid username address.");
+    if (!username || username.trim().length === 0) {
+      setError("Please enter a username.");
       return;
     }
 
@@ -52,7 +50,7 @@ function Register() {
 
           if (contentType && contentType.includes("application/json")) {
             const err = await res.json();
-            errorMessage = err.message || errorMessage;
+            errorMessage = err.message || err.msg || errorMessage;
           } else {
             const errText = await res.text();
             if (errText) errorMessage = errText;
@@ -85,7 +83,7 @@ function Register() {
         <h2 className={styles.registerTitle}>Create Account</h2>
         <input
           className={styles.registerInput}
-          type="username"
+          type="text"
           placeholder="Username"
           id="username"
           onChange={onChange}
