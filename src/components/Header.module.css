@@ -1,0 +1,33 @@
+.userBox {
+  position: absolute;
+  top: 20px;
+  right: 20px;
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  background: rgba(0, 0, 0, 0.5);
+  padding: 0.5rem 1rem;
+  border-radius: 8px;
+  color: #fff;
+  font-weight: bold;
+  font-family: "Orbitron", sans-serif;
+  text-shadow: 1px 1px #000;
+  z-index: 1000;
+}
+
+.logoutButton {
+  background-color: transparent;
+  border: 1px solid #fff;
+  color: #fff;
+  padding: 0.3rem 0.7rem;
+  border-radius: 5px;
+  cursor: pointer;
+  transition: background-color 0.2s, color 0.2s;
+  font-size: 0.9rem;
+}
+
+.logoutButton:hover {
+  background-color: #ff4d4d;
+  color: white;
+  border-color: #ff4d4d;
+}
