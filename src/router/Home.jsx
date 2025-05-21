@@ -9,7 +9,7 @@ export default function Home() {
       <p className={styles.subtitle}>
         ARE YOU TIRED OF PLAYING THE SAME OLD BORING META STRATEGIES?
         ULTIMATE BRAVERY GOT YOU COVERED. 
-        CHOOSE SOME FILTERS AND THEN GET A TOTALLY DIFFRENT PLAY EXPERIENCE, LIKE YOU NEVER TRIED BEFORE.
+        APPLY FILTERS AND UNLOCK A FRESH, UNEXPECTED GAMEPLAY EXPERIENCE—IT'S LIKE PLAYING A WHOLE NEW GAME!
       </p>
 
       <Link to="/games">
@@ -19,6 +19,9 @@ export default function Home() {
       <Link to="/routes" className={styles.linkText}>
         API ROUTES
       </Link>
+            <br/>
+      <Link to="../login" className={styles.button}>Login</Link>
+      <Link to="/routes" className={styles.button}>Sign Up</Link>
     </div>
   );
 }
