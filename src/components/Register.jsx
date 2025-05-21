@@ -3,7 +3,7 @@ import styles from "./Register.module.css";
 import { Link, useNavigate } from "react-router-dom";
 
 function Register() {
-  const init = { email: "", password: "", confirmPassword: "" };
+  const init = { username: "", password: "", confirmPassword: "" };
   const [registerCredentials, setRegisterCredentials] = useState(init);
   const [error, setError] = useState("");
   const navigate = useNavigate();
@@ -15,16 +15,16 @@ function Register() {
     return lengthValid && hasCapital && hasSpecial;
   };
 
-  const validateEmail = (email) => /^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email);
+  const validateusername = (username) => /^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(username);
 
   const performRegister = (evt) => {
     evt.preventDefault();
     setError("");
 
-    const { email, password, confirmPassword } = registerCredentials;
+    const { username, password, confirmPassword } = registerCredentials;
 
-    if (!validateEmail(email)) {
-      setError("Please enter a valid email address.");
+    if (!validateusername(username)) {
+      setError("Please enter a valid username address.");
       return;
     }
 
@@ -43,7 +43,7 @@ function Register() {
     fetch("https://ultimatebravery.yumiya.dk/api/auth/register", {
       method: "POST",
       headers: { "Content-Type": "application/json" },
-      body: JSON.stringify({ email, password }),
+      body: JSON.stringify({ username, password }),
     })
       .then(async (res) => {
         if (!res.ok) {
@@ -71,7 +71,7 @@ function Register() {
         setError(err.message);
       });
   };
-  
+
   const onChange = (evt) => {
     setRegisterCredentials({
       ...registerCredentials,
@@ -85,11 +85,11 @@ function Register() {
         <h2 className={styles.registerTitle}>Create Account</h2>
         <input
           className={styles.registerInput}
-          type="email"
-          placeholder="Email"
-          id="email"
+          type="username"
+          placeholder="Username"
+          id="username"
           onChange={onChange}
-          value={registerCredentials.email}
+          value={registerCredentials.username}
           required
         />
         <input
