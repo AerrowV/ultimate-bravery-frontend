@@ -56,38 +56,58 @@ const GameDetails = () => {
     setFiltered(f);
   }, [strategies, mapFilter, typeFilter]);
 
-  useEffect(() => {
-    const base = filtered.map((s) => ({
-      id: generateId(),
-      image: typeImages[s.type] || typeImages.SERIOUS,
-      text: s.title,
-      strategy: s,
-    }));
+useEffect(() => {
+  const makePrize = (strategy) => ({
+    id: generateId(),
+    image: typeImages[strategy.type] || typeImages.SERIOUS,
+    text: strategy.title,
+    strategy,
+  });
 
-    const full = [
-      ...base,
-      ...Array(base.length * 3)
-        .fill()
-        .map(() => base[Math.floor(Math.random() * base.length)]),
-      ...base,
-    ].map((p) => ({ ...p, id: generateId() }));
+  const base = filtered.map(makePrize);
 
-    setPrizeList(full);
-  }, [filtered]);
+  const duplicates = Array(base.length * 3)
+    .fill()
+    .map(() => {
+      const strategy = filtered[Math.floor(Math.random() * filtered.length)];
+      return makePrize(strategy);
+    });
 
-  const handleStart = () => {
-    if (!filtered.length) return alert("No strategies match filters");
-    const randIdx = Math.floor(Math.random() * filtered.length);
-    const fullPrizeIndex = filtered.length * 2 + randIdx;
+  const full = [...base, ...duplicates, ...base].map((p) => ({
+    ...p,
+    id: generateId(),
+  }));
 
-    const strategy = filtered[randIdx];
-    selectedRef.current = strategy;
+  setPrizeList(full);
+}, [filtered]);
 
-    setPrizeIndex(fullPrizeIndex);
-    setSelected(null);
-    setShowConfetti(false);
-    setStart(true);
-  };
+const handleStart = () => {
+  if (!filtered.length) {
+    alert("No strategies match filters");
+    return;
+  }
+
+  const candidateIndexes = prizeList
+    .map((p, i) => ({ index: i, strategy: p.strategy }))
+    .filter((entry) =>
+      (!mapFilter || entry.strategy.mapIds.includes(Number(mapFilter))) &&
+      (!typeFilter || entry.strategy.type === typeFilter)
+    );
+
+  if (candidateIndexes.length === 0) {
+    alert("No matching strategies on the wheel");
+    return;
+  }
+
+  const randomPick = candidateIndexes[Math.floor(Math.random() * candidateIndexes.length)];
+
+  selectedRef.current = randomPick.strategy;
+  setPrizeIndex(randomPick.index);    
+  setSelected(null);       
+  setShowConfetti(false); 
+  setStart(true);                            
+};
+
 
   const handlePrizeDefined = () => {
     const strat = selectedRef.current;
@@ -105,7 +125,6 @@ const GameDetails = () => {
       <h1 className="text-3xl font-bold mb-6">Strategy Roulette</h1>
       {error && <p className="text-red-600 mb-4">{error}</p>}
 
-      {/* Filters */}
       <div className="flex justify-center gap-4 mb-4">
         <select
           className="border p-2 rounded"
@@ -130,7 +149,6 @@ const GameDetails = () => {
         </select>
       </div>
 
-      {/* Confetti */}
       {showConfetti && containerRef.current && (
         <Confetti
           width={containerRef.current.clientWidth}
@@ -140,7 +158,6 @@ const GameDetails = () => {
         />
       )}
 
-      {/* Roulette + Pointer */}
       <div className="relative mx-auto w-full max-w-lg aspect-square">
         <div className="absolute top-1/2 left-1/2 w-1 h-10 bg-red-600 rounded shadow-md transform -translate-x-1/2 -translate-y-full z-10" />
         <RoulettePro
@@ -156,19 +173,17 @@ const GameDetails = () => {
         />
       </div>
 
-      {/* Spin Button */}
       <button
         onClick={handleStart}
         disabled={start}
         className="mt-6 px-6 py-2 bg-yellow-500 hover:bg-yellow-600 text-white font-bold rounded disabled:opacity-50"
       >
-        🎰 Spin for Strategy
+        Spin for Strategy
       </button>
 
-      {/* Result */}
       {selected && (
         <div className="mt-8 text-left max-w-xl mx-auto bg-gray-100 p-4 rounded shadow">
-          <h2 className="text-xl font-bold mb-2">🎯 Selected Strategy</h2>
+          <h2 className="text-xl font-bold mb-2">Selected Strategy</h2>
           <p><strong>Title:</strong> {selected.title}</p>
           <p><strong>Description:</strong> {selected.description}</p>
           <p><strong>Type:</strong> {selected.type}</p>
@@ -176,10 +191,9 @@ const GameDetails = () => {
         </div>
       )}
 
-      {/* History */}
       {history.length > 0 && (
         <div className="mt-10 text-left max-w-xl mx-auto">
-          <h2 className="text-lg font-semibold mb-2">📜 Strategy History</h2>
+          <h2 className="text-lg font-semibold mb-2">Strategy History</h2>
           <ul className="list-disc pl-6">
             {history.map((s, i) => (
               <li key={i}>{s.title} ({mapNames[s.mapIds[0]]}) - {s.type}</li>
