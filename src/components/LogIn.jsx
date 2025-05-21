@@ -1,12 +1,21 @@
 import React, { useState } from 'react';
+import { useNavigate } from 'react-router-dom'; // <-- import this
 
 function LogIn({ login }) {
   const init = { username: "", password: "" };
   const [loginCredentials, setLoginCredentials] = useState(init);
+  const navigate = useNavigate(); // <-- get navigation function
 
   const performLogin = (evt) => {
     evt.preventDefault();
-    login(loginCredentials.username, loginCredentials.password);
+    login(loginCredentials.username, loginCredentials.password)
+      .then(() => {
+        navigate("/"); // <-- redirect after successful login
+      })
+      .catch((err) => {
+        console.error("Login failed", err);
+        alert("Login failed. Check your credentials.");
+      });
   };
 
   const onChange = (evt) => {

@@ -70,6 +70,16 @@ function apiFacade() {
     return loggedIn && roles.includes(neededRole);
   };
 
+  const getUsername = () => {
+  const token = getToken();
+  if (token != null) {
+    const payloadBase64 = token.split('.')[1];
+    const decodedClaims = JSON.parse(window.atob(payloadBase64));
+    return decodedClaims.username || decodedClaims.sub; // depends on backend
+  }
+  return null;
+};
+
   return {
     makeOptions,
     setToken,
@@ -79,7 +89,8 @@ function apiFacade() {
     logout,
     fetchData,
     getUserRoles,
-    hasUserAccess
+    hasUserAccess,
+    getUsername
   };
 }
 

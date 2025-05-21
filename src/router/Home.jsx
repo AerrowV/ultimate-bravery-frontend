@@ -1,9 +1,26 @@
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import styles from "./Home.module.css";
+import facade from "../apiFacade";
 
 export default function Home() {
+    const username = facade.getUsername();
+    const navigate = useNavigate();
+
+    const handleLogout = () => {
+      facade.logout();
+      navigate("/login");
+    };
+
   return (
     <div className={styles.container}>
+      {username && (
+        <div className={styles.userBox}>
+          <span>👤 {username}</span>
+          <button className={styles.logoutButton} onClick={handleLogout}>
+            Logout
+          </button>
+        </div>
+      )}
       <h1 className={styles.title}>WELCOME TO ULTIMATE BRAVERY</h1>
       <br />
       <p className={styles.subtitle}>
@@ -20,7 +37,7 @@ export default function Home() {
         API ROUTES
       </Link>
             <br/>
-      <Link to="../login" className={styles.button}>Login</Link>
+      <Link to="/login" className={styles.button}>Login</Link>
       <Link to="/routes" className={styles.button}>Sign Up</Link>
     </div>
   );
