@@ -24,8 +24,7 @@ const Games = () => {
   }, []);
 
   if (error) return <p>Error: {error}</p>;
-  if (!games.length) return <p>Loading games...</p>;
-
+  
   return (
     <div className={styles.container}>
             <Header />
