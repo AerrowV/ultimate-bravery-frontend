@@ -11,14 +11,14 @@ import ErrorPage from "./components/ErrorPage.jsx";
 import Login from "./components/LogIn.jsx";
 import LoggedIn from "./components/LoggedIn.jsx";
 import facade from "./apiFacade.js";
-import GameDetails from "./router/GameDetails.jsx"
+import GameDetails from "./router/GameDetails.jsx";
+import Register from "./components/Register.jsx";
 
 function AppRouter() {
   const [loggedIn, setLoggedIn] = useState(facade.loggedIn());
 
   const login = (username, password) => {
-    return facade.login(username, password)
-      .then(() => setLoggedIn(true));
+    return facade.login(username, password).then(() => setLoggedIn(true));
   };
 
   const logout = () => {
@@ -30,35 +30,39 @@ function AppRouter() {
     {
       path: "/",
       element: <Home />,
-      errorElement: <ErrorPage />
+      errorElement: <ErrorPage />,
     },
     {
       path: "/games",
-      element: <Games />
+      element: <Games />,
     },
     {
       path: "/games/1",
-      element: <GameDetails />
+      element: <GameDetails />,
     },
     {
       path: "/guns",
-      element: <Guns />
+      element: <Guns />,
     },
     {
       path: "/maps",
-      element: <Maps />
+      element: <Maps />,
     },
     {
       path: "/strategies",
-      element: <Strategies />
+      element: <Strategies />,
     },
     {
       path: "/routes",
-      element: <Routes />
+      element: <Routes />,
     },
     {
       path: "/login",
-      element: <Login login={login} />
+      element: <Login login={login} />,
+    },
+    {
+      path: "/register",
+      element: <Register />,
     },
     {
       path: "/profile",
@@ -69,8 +73,8 @@ function AppRouter() {
         </>
       ) : (
         <Login login={login} />
-      )
-    }
+      ),
+    },
   ]);
 
   return <RouterProvider router={router} />;
