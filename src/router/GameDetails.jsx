@@ -135,9 +135,7 @@ const handleStart = () => {
         }}
       />
 
-<<<<<<< HEAD
       {/* 🎉 Konfetti */}
-=======
       <div className="flex justify-center gap-4 mb-4">
         <select
           className="border p-2 rounded"
@@ -162,7 +160,6 @@ const handleStart = () => {
         </select>
       </div>
 
->>>>>>> 23137fa19dd19e226f38696bdf6f6fb242980cc7
       {showConfetti && containerRef.current && (
         <Confetti
           width={containerRef.current.clientWidth}
@@ -172,23 +169,6 @@ const handleStart = () => {
         />
       )}
 
-<<<<<<< HEAD
-      {/* 🧠 Strategi sektion */}
-      <div className="relative z-10 p-6">
-        <h1 className="text-4xl font-bold mb-6 drop-shadow-lg">Strategy Roulette</h1>
-        {error && <p className="text-red-500 font-bold">{error}</p>}
-
-        {/* 🎮 Filtre */}
-        <div className="flex justify-center gap-4 mb-6">
-          <select
-            className="border p-2 rounded text-black"
-            value={mapFilter || ""}
-            onChange={(e) => setMapFilter(e.target.value || null)}
-          >
-            <option value="">All Maps</option>
-            {Object.entries(mapNames).map(([id, name]) => (
-              <option key={id} value={id}>{name}</option>
-=======
       <div className="relative mx-auto w-full max-w-lg aspect-square">
         <div className="absolute top-1/2 left-1/2 w-1 h-10 bg-red-600 rounded shadow-md transform -translate-x-1/2 -translate-y-full z-10" />
         <RoulettePro
@@ -228,7 +208,6 @@ const handleStart = () => {
           <ul className="list-disc pl-6">
             {history.map((s, i) => (
               <li key={i}>{s.title} ({mapNames[s.mapIds[0]]}) - {s.type}</li>
->>>>>>> 23137fa19dd19e226f38696bdf6f6fb242980cc7
             ))}
           </select>
 

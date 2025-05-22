@@ -19,8 +19,15 @@ export default function Header() {
     navigate("/register");
   };
 
+    const handleHome = () => {
+    navigate("/");
+  };
+
   return (
     <div className={styles.userBox}>
+            <button className={styles.headerButton} onClick={handleHome}>
+        Home
+      </button>
       {!username ? (
         <>
           <button className={styles.headerButton} onClick={handleLogin}>
