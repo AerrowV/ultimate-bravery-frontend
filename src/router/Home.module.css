@@ -74,3 +74,13 @@ body {
 .linkText:hover {
   color: #00bfff;
 }
+
+.logo {
+  width: 300px;
+  height: 300px;
+  object-fit: contain;
+  display: block;
+  margin: 0 auto 20px;
+}
+
+

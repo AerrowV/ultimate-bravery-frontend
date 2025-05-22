@@ -36,15 +36,19 @@ export default function Header() {
         </>
       ) : (
         <>
-         <span>{username.charAt(0).toUpperCase() + username.slice(1)}</span>
+          <span>{username.charAt(0).toUpperCase() + username.slice(1)}</span>
 
           <button className={styles.headerButton} onClick={handleLogout}>
             Logout
           </button>
         </>
       )}
-      <button className={styles.headerButton} onClick={handleHome}>
-        Home
+      <button className={styles.logoButton} onClick={handleHome}>
+        <img
+          src="/images/UltimateBraveryLogo.png"
+          alt="Home"
+          className={styles.logoImage}
+        />
       </button>
     </div>
   );
