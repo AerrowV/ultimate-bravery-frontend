@@ -75,7 +75,7 @@ function apiFacade() {
   if (token != null) {
     const payloadBase64 = token.split('.')[1];
     const decodedClaims = JSON.parse(window.atob(payloadBase64));
-    return decodedClaims.username || decodedClaims.sub; // depends on backend
+    return decodedClaims.username || decodedClaims.sub;
   }
   return null;
 };

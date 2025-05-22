@@ -1,5 +1,6 @@
 import { useEffect, useState } from "react";
 import styles from "./Games.module.css";
+import Header from "../components/Header";
 
 const Games = () => {
   const [games, setGames] = useState([]);
@@ -23,10 +24,10 @@ const Games = () => {
   }, []);
 
   if (error) return <p>Error: {error}</p>;
-  if (!games.length) return <p>Loading games...</p>;
-
+  
   return (
     <div className={styles.container}>
+      <Header />
       {games.map((game) => (
         <a
         key={game.id}

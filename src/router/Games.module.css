@@ -59,7 +59,7 @@
   display: none;
 }
 
-.box:first-child {
+.box:first-of-type {
   border-left: none;
   clip-path: polygon(0 0, 80% 0, 100% 100%, 0 100%);
 }
