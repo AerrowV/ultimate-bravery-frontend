@@ -91,11 +91,6 @@ export default function GameDetails() {
       alert("No strategies match filters");
       return;
     }
-  const handleStart = () => {
-    if (!filtered.length) {
-      alert("No strategies match filters");
-      return;
-    }
 
     const candidateIndexes = prizeList
       .map((p, i) => ({ index: i, strategy: p.strategy }))
@@ -105,10 +100,6 @@ export default function GameDetails() {
           (!typeFilter || entry.strategy.type === typeFilter)
       );
 
-    if (candidateIndexes.length === 0) {
-      alert("No matching strategies on the wheel");
-      return;
-    }
     if (candidateIndexes.length === 0) {
       alert("No matching strategies on the wheel");
       return;
@@ -191,12 +182,12 @@ export default function GameDetails() {
       </div>
 
       <button onClick={handleStart} disabled={start} className={styles.button}>
-        🌀 Spin for Strategy
+        Spin for Strategy
       </button>
 
       {selected && (
         <div className={styles.strategyCard}>
-          <h2>🎯 Selected Strategy</h2>
+          <h2>Selected Strategy</h2>
           <p>
             <strong>Title:</strong> {selected.title}
           </p>
@@ -214,7 +205,7 @@ export default function GameDetails() {
 
       {history.length > 0 && (
         <div className={styles.historyList}>
-          <h3>📜 Strategy History</h3>
+          <h3>Strategy History</h3>
           <ul>
             {history.map((s, i) => (
               <li key={i}>
