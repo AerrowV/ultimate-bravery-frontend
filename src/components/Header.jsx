@@ -19,15 +19,12 @@ export default function Header() {
     navigate("/register");
   };
 
-    const handleHome = () => {
+  const handleHome = () => {
     navigate("/");
   };
 
   return (
     <div className={styles.userBox}>
-            <button className={styles.headerButton} onClick={handleHome}>
-        Home
-      </button>
       {!username ? (
         <>
           <button className={styles.headerButton} onClick={handleLogin}>
@@ -39,12 +36,15 @@ export default function Header() {
         </>
       ) : (
         <>
-          <span>👤 {username}</span> 
+          <span>👤 {username}</span>
           <button className={styles.headerButton} onClick={handleLogout}>
             Logout
           </button>
         </>
       )}
+      <button className={styles.headerButton} onClick={handleHome}>
+        Home
+      </button>
     </div>
   );
 }
