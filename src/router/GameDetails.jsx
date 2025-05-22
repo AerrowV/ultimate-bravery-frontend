@@ -58,63 +58,61 @@ export default function GameDetails() {
     setFiltered(f);
   }, [strategies, mapFilter, typeFilter]);
 
-useEffect(() => {
-  const makePrize = (strategy) => ({
-    id: generateId(),
-    image: typeImages[strategy.type] || typeImages.SERIOUS,
-    text: strategy.title,
-    strategy,
-  });
-
-  const base = filtered.map(makePrize);
-
-  const duplicates = Array(base.length * 3)
-    .fill()
-    .map(() => {
-      const strategy = filtered[Math.floor(Math.random() * filtered.length)];
-      return makePrize(strategy);
+  useEffect(() => {
+    const makePrize = (strategy) => ({
+      id: generateId(),
+      image: typeImages[strategy.type] || typeImages.SERIOUS,
+      text: strategy.title,
+      strategy,
     });
 
-  const full = [...base, ...duplicates, ...base].map((p) => ({
-    ...p,
-    id: generateId(),
-  }));
+    const base = filtered.map(makePrize);
 
-  setPrizeList(full);
-}, [filtered]);
+    const duplicates = Array(base.length * 3)
+      .fill()
+      .map(() => {
+        const strategy = filtered[Math.floor(Math.random() * filtered.length)];
+        return makePrize(strategy);
+      });
 
-const handleStart = () => {
-  if (!filtered.length) {
-    alert("No strategies match filters");
-    return;
-  }
+    const full = [...base, ...duplicates, ...base].map((p) => ({
+      ...p,
+      id: generateId(),
+    }));
 
-  const candidateIndexes = prizeList
-    .map((p, i) => ({ index: i, strategy: p.strategy }))
-    .filter((entry) =>
-      (!mapFilter || entry.strategy.mapIds.includes(Number(mapFilter))) &&
-      (!typeFilter || entry.strategy.type === typeFilter)
-    );
+    setPrizeList(full);
+  }, [filtered]);
 
-  if (candidateIndexes.length === 0) {
-    alert("No matching strategies on the wheel");
-    return;
-  }
+  const handleStart = () => {
+    if (!filtered.length) {
+      alert("No strategies match filters");
+      return;
+    }
 
-  const randomPick = candidateIndexes[Math.floor(Math.random() * candidateIndexes.length)];
+    const candidateIndexes = prizeList
+      .map((p, i) => ({ index: i, strategy: p.strategy }))
+      .filter((entry) =>
+        (!mapFilter || entry.strategy.mapIds.includes(Number(mapFilter))) &&
+        (!typeFilter || entry.strategy.type === typeFilter)
+      );
 
-  selectedRef.current = randomPick.strategy;
-  setPrizeIndex(randomPick.index);    
-  setSelected(null);       
-  setShowConfetti(false); 
-  setStart(true);                            
-};
+    if (candidateIndexes.length === 0) {
+      alert("No matching strategies on the wheel");
+      return;
+    }
 
+    const randomPick = candidateIndexes[Math.floor(Math.random() * candidateIndexes.length)];
+
+    selectedRef.current = randomPick.strategy;
+    setPrizeIndex(randomPick.index);
+    setSelected(null);
+    setShowConfetti(false);
+    setStart(true);
+  };
 
   const handlePrizeDefined = () => {
     const strat = selectedRef.current;
     if (strat) {
-      console.log("Selected strategy:", strat); // DEBUG
       setSelected(strat);
       setHistory((h) => [strat, ...h]);
       setShowConfetti(true);
@@ -125,8 +123,6 @@ const handleStart = () => {
 
   return (
     <div className="relative min-h-screen text-center text-white overflow-x-hidden" ref={containerRef}>
-      
-      {/* 🔁 Baggrundsbillede */}
       <div
         className="fixed inset-0 z-0 bg-cover bg-center"
         style={{
@@ -135,34 +131,6 @@ const handleStart = () => {
         }}
       />
 
-<<<<<<< HEAD
-      {/* 🎉 Konfetti */}
-=======
-      <div className="flex justify-center gap-4 mb-4">
-        <select
-          className="border p-2 rounded"
-          value={mapFilter || ""}
-          onChange={(e) => setMapFilter(e.target.value || null)}
-        >
-          <option value="">All Maps</option>
-          {Object.entries(mapNames).map(([id, name]) => (
-            <option key={id} value={id}>{name}</option>
-          ))}
-        </select>
-
-        <select
-          className="border p-2 rounded"
-          value={typeFilter}
-          onChange={(e) => setTypeFilter(e.target.value)}
-        >
-          <option value="">All Types</option>
-          <option value="TROLL">TROLL</option>
-          <option value="AVERAGE">AVERAGE</option>
-          <option value="SERIOUS">SERIOUS</option>
-        </select>
-      </div>
-
->>>>>>> 23137fa19dd19e226f38696bdf6f6fb242980cc7
       {showConfetti && containerRef.current && (
         <Confetti
           width={containerRef.current.clientWidth}
@@ -172,13 +140,10 @@ const handleStart = () => {
         />
       )}
 
-<<<<<<< HEAD
-      {/* 🧠 Strategi sektion */}
       <div className="relative z-10 p-6">
         <h1 className="text-4xl font-bold mb-6 drop-shadow-lg">Strategy Roulette</h1>
         {error && <p className="text-red-500 font-bold">{error}</p>}
 
-        {/* 🎮 Filtre */}
         <div className="flex justify-center gap-4 mb-6">
           <select
             className="border p-2 rounded text-black"
@@ -188,47 +153,6 @@ const handleStart = () => {
             <option value="">All Maps</option>
             {Object.entries(mapNames).map(([id, name]) => (
               <option key={id} value={id}>{name}</option>
-=======
-      <div className="relative mx-auto w-full max-w-lg aspect-square">
-        <div className="absolute top-1/2 left-1/2 w-1 h-10 bg-red-600 rounded shadow-md transform -translate-x-1/2 -translate-y-full z-10" />
-        <RoulettePro
-          prizes={prizeList}
-          prizeIndex={prizeIndex}
-          start={start}
-          onPrizeDefined={handlePrizeDefined}
-          spinningTime={7}
-          options={{
-            stopInCenter: true,
-            withoutAnimation: !start,
-          }}
-        />
-      </div>
-
-      <button
-        onClick={handleStart}
-        disabled={start}
-        className="mt-6 px-6 py-2 bg-yellow-500 hover:bg-yellow-600 text-white font-bold rounded disabled:opacity-50"
-      >
-        Spin for Strategy
-      </button>
-
-      {selected && (
-        <div className="mt-8 text-left max-w-xl mx-auto bg-gray-100 p-4 rounded shadow">
-          <h2 className="text-xl font-bold mb-2">Selected Strategy</h2>
-          <p><strong>Title:</strong> {selected.title}</p>
-          <p><strong>Description:</strong> {selected.description}</p>
-          <p><strong>Type:</strong> {selected.type}</p>
-          <p><strong>Map:</strong> {selected.mapIds.map(id => mapNames[id]).join(', ')}</p>
-        </div>
-      )}
-
-      {history.length > 0 && (
-        <div className="mt-10 text-left max-w-xl mx-auto">
-          <h2 className="text-lg font-semibold mb-2">Strategy History</h2>
-          <ul className="list-disc pl-6">
-            {history.map((s, i) => (
-              <li key={i}>{s.title} ({mapNames[s.mapIds[0]]}) - {s.type}</li>
->>>>>>> 23137fa19dd19e226f38696bdf6f6fb242980cc7
             ))}
           </select>
 
@@ -244,7 +168,6 @@ const handleStart = () => {
           </select>
         </div>
 
-        {/* 🎰 Roulette */}
         <div className="relative mx-auto w-full max-w-lg aspect-square">
           <div className="absolute top-1/2 left-1/2 w-1 h-10 bg-red-600 rounded shadow transform -translate-x-1/2 -translate-y-full z-10" />
           <RoulettePro
@@ -260,19 +183,17 @@ const handleStart = () => {
           />
         </div>
 
-        {/* 🎯 Start knap */}
         <button
           onClick={handleStart}
           disabled={start}
           className="mt-6 px-6 py-2 bg-yellow-500 hover:bg-yellow-600 text-black font-bold rounded disabled:opacity-50"
         >
-          🎰 Spin for Strategy
+          Spin for Strategy
         </button>
 
-        {/* ✅ Resultat */}
         {selected && (
           <div className="mt-8 text-left max-w-xl mx-auto bg-white bg-opacity-20 backdrop-blur-sm p-4 rounded shadow-lg text-white">
-            <h2 className="text-xl font-bold mb-2">🎯 Selected Strategy</h2>
+            <h2 className="text-xl font-bold mb-2">Selected Strategy</h2>
             <p><strong>Title:</strong> {selected.title}</p>
             <p className="whitespace-pre-wrap break-words">
               <strong>Description:</strong> {selected.description}
@@ -282,10 +203,9 @@ const handleStart = () => {
           </div>
         )}
 
-        {/* 🕘 Historik */}
         {history.length > 0 && (
           <div className="mt-10 text-left max-w-xl mx-auto bg-white bg-opacity-10 backdrop-blur-sm p-4 rounded shadow text-white">
-            <h2 className="text-lg font-semibold mb-2">📜 Strategy History</h2>
+            <h2 className="text-lg font-semibold mb-2">Strategy History</h2>
             <ul className="list-disc pl-6">
               {history.map((s, i) => (
                 <li key={i}>{s.title} ({mapNames[s.mapIds[0]]}) - {s.type}</li>
