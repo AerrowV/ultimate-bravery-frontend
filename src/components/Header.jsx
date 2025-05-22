@@ -39,7 +39,8 @@ export default function Header() {
         </>
       ) : (
         <>
-          <span>👤 {username}</span> 
+         <span>{username.charAt(0).toUpperCase() + username.slice(1)}</span>
+
           <button className={styles.headerButton} onClick={handleLogout}>
             Logout
           </button>
