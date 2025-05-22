@@ -91,6 +91,11 @@ export default function GameDetails() {
       alert("No strategies match filters");
       return;
     }
+  const handleStart = () => {
+    if (!filtered.length) {
+      alert("No strategies match filters");
+      return;
+    }
 
     const candidateIndexes = prizeList
       .map((p, i) => ({ index: i, strategy: p.strategy }))
@@ -100,6 +105,10 @@ export default function GameDetails() {
           (!typeFilter || entry.strategy.type === typeFilter)
       );
 
+    if (candidateIndexes.length === 0) {
+      alert("No matching strategies on the wheel");
+      return;
+    }
     if (candidateIndexes.length === 0) {
       alert("No matching strategies on the wheel");
       return;
