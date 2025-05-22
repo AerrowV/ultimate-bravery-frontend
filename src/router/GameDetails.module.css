@@ -1,4 +1,9 @@
-/* GameDetails.module.css */
+html,
+body {
+  height: 100%;
+  width: 100%;
+  overflow-x: hidden;
+}
 
 .container {
   position: relative;
@@ -7,11 +12,11 @@
   color: #fff;
   text-align: center;
   font-family: "Orbitron", sans-serif;
-  background-image: url("https://profilerr.net/static/content/thumbs/1456x/3/c2/hstmjm-3299df49bf1f0b6f404aee30b6ccec23.webp");
+  background-image: url("/images/cs2.png");
   background-size: cover;
   background-position: center;
   background-repeat: no-repeat;
-  background-attachment: fixed;
+  background-attachment: scroll;
   z-index: 1;
 }
 
@@ -110,4 +115,23 @@
 
 .historyList ul {
   list-style: disc inside;
+}
+
+select {
+  width: 100%;
+  max-width: 200px;
+  background: linear-gradient(145deg, #1e90ff, #00bfff);
+  border: none;
+  color: white;
+  padding: 1rem 2rem;
+  margin: 1rem;
+  font-size: 1.2rem;
+  font-weight: bold;
+  border-radius: 10px;
+  cursor: pointer;
+  transition: transform 0.2s, box-shadow 0.2s;
+  box-shadow: 0 5px 15px rgba(0, 191, 255, 0.4);
+  position: relative;
+  z-index: 10;
+  background-color: #00bfff;
 }
