@@ -8,12 +8,12 @@ import styles from "./GameDetails.module.css";
 
 const mapNames = {
   1: "Ancient",
-  2: "Mirage",
-  3: "Inferno",
-  4: "Nuke",
-  5: "Overpass",
-  6: "Vertigo",
-  7: "Dust II"
+  2: "Anubis",
+  3: "Dust 2",
+  4: "Inferno",
+  5: "Mirage",
+  6: "Nuke",
+  7: "Train",
 };
 
 const typeImages = {
