@@ -1,0 +1,113 @@
+/* GameDetails.module.css */
+
+.container {
+  position: relative;
+  min-height: 100vh;
+  padding: 4rem 2rem;
+  color: #fff;
+  text-align: center;
+  font-family: "Orbitron", sans-serif;
+  background-image: url("https://profilerr.net/static/content/thumbs/1456x/3/c2/hstmjm-3299df49bf1f0b6f404aee30b6ccec23.webp");
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+  background-attachment: fixed;
+  z-index: 1;
+}
+
+.button {
+  background: linear-gradient(145deg, #1e90ff, #00bfff);
+  border: none;
+  color: white;
+  padding: 1rem 2rem;
+  margin: 1rem;
+  font-size: 1.2rem;
+  font-weight: bold;
+  border-radius: 10px;
+  cursor: pointer;
+  transition: transform 0.2s, box-shadow 0.2s;
+  box-shadow: 0 5px 15px rgba(0, 191, 255, 0.4);
+  position: relative;
+  z-index: 10;
+}
+
+.button:hover {
+  transform: scale(1.05);
+  box-shadow: 0 10px 20px rgba(0, 191, 255, 0.6);
+}
+
+.button:disabled {
+  opacity: 0.5;
+  cursor: not-allowed;
+  transform: none;
+  box-shadow: none;
+}
+
+.title {
+  font-size: 3rem;
+  margin-bottom: 1rem;
+  text-shadow: 2px 2px #000;
+  position: relative;
+  z-index: 10;
+}
+
+.subtitle {
+  font-size: 1.5rem;
+  margin-bottom: 2rem;
+  max-width: 800px;
+  margin-left: auto;
+  margin-right: auto;
+  text-shadow: 1px 1px #000;
+  position: relative;
+  z-index: 10;
+}
+
+@media (max-width: 600px) {
+  .title {
+    font-size: 2.2rem;
+  }
+
+  .subtitle {
+    font-size: 1.1rem;
+  }
+
+  .button {
+    width: 100%;
+  }
+}
+
+.strategyCard {
+  margin-top: 2rem;
+  max-width: 600px;
+  margin-left: auto;
+  margin-right: auto;
+  background: rgba(255 255 255 / 0.2);
+  backdrop-filter: blur(8px);
+  border-radius: 10px;
+  padding: 1.5rem;
+  color: white;
+  text-align: left;
+  box-shadow: 0 0 10px rgba(0, 191, 255, 0.4);
+  position: relative;
+  z-index: 10;
+}
+
+.historyList {
+  margin-top: 2rem;
+  max-width: 600px;
+  margin-left: auto;
+  margin-right: auto;
+  background: rgba(255 255 255 / 0.1);
+  backdrop-filter: blur(8px);
+  border-radius: 10px;
+  padding: 1rem;
+  color: white;
+  text-align: left;
+  box-shadow: 0 0 8px rgba(0, 191, 255, 0.3);
+  position: relative;
+  z-index: 10;
+}
+
+.historyList ul {
+  list-style: disc inside;
+}
