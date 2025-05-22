@@ -1,9 +1,9 @@
 import { useEffect, useState, useRef } from "react";
-import { useParams, useNavigate } from "react-router-dom";
+import { useParams } from "react-router-dom";
 import RoulettePro from "react-roulette-pro";
 import "react-roulette-pro/dist/index.css";
 import Confetti from "react-confetti";
-
+import Header from "../components/Header"
 import styles from "./GameDetails.module.css";
 
 const mapNames = {
@@ -13,6 +13,7 @@ const mapNames = {
   4: "Nuke",
   5: "Overpass",
   6: "Vertigo",
+  7: "Dust II"
 };
 
 const typeImages = {
@@ -25,7 +26,6 @@ const generateId = () => `${Date.now().toString(36)}-${Math.random().toString(36
 
 export default function GameDetails() {
   const { id } = useParams();
-  const navigate = useNavigate();
 
   const [strategies, setStrategies] = useState([]);
   const [filtered, setFiltered] = useState([]);
@@ -126,6 +126,7 @@ export default function GameDetails() {
 
   return (
     <div className={styles.container} ref={containerRef}>
+      <Header />
       <h1 className={styles.title}>Strategy Roulette</h1>
 
       {error && <p style={{ color: "red", fontWeight: "bold" }}>{error}</p>}
@@ -215,11 +216,6 @@ export default function GameDetails() {
           </ul>
         </div>
       )}
-
-      <button onClick={() => navigate("/games")} className={styles.button}>
-        ← Back to Games
-      </button>
-
       {showConfetti && containerRef.current && (
         <Confetti
           width={containerRef.current.clientWidth}
