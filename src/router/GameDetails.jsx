@@ -37,7 +37,7 @@ export default function GameDetails() {
   const [selected, setSelected] = useState(null);
   const [history, setHistory] = useState([]);
   const [error, setError] = useState("");
-  const [showConfetti, setShowConfetti] = useState(false);
+  const [runConfetti, setRunConfetti] = useState(false);
 
   const containerRef = useRef(null);
   const selectedRef = useRef(null);
@@ -109,7 +109,7 @@ export default function GameDetails() {
     selectedRef.current = randomPick.strategy;
     setPrizeIndex(randomPick.index);
     setSelected(null);
-    setShowConfetti(false);
+    setRunConfetti(false);
     setStart(true);
   };
 
@@ -118,10 +118,14 @@ export default function GameDetails() {
     if (strat) {
       setSelected(strat);
       setHistory((h) => [strat, ...h]);
-      setShowConfetti(true);
-      setTimeout(() => setShowConfetti(false), 5000);
+      setRunConfetti(true);
     }
     setStart(false);
+  };
+
+  const handleConfettiComplete = (confetti) => {
+    setRunConfetti(false);
+    confetti?.reset();
   };
 
   return (
@@ -216,13 +220,21 @@ export default function GameDetails() {
           </ul>
         </div>
       )}
-      {showConfetti && containerRef.current && (
-        <Confetti
-          width={containerRef.current.clientWidth}
-          height={containerRef.current.clientHeight}
-          recycle={false}
-          numberOfPieces={150}
-        />
+
+      {containerRef.current && (
+        <div
+          className={runConfetti ? styles.confettiShow : styles.confettiFade}
+          style={{ position: "absolute", top: 0, left: 0, width: "100%", height: "100%", pointerEvents: "none" }}
+        >
+          <Confetti
+            width={containerRef.current.clientWidth}
+            height={containerRef.current.clientHeight}
+            numberOfPieces={1500}
+            recycle={false}
+            run={runConfetti}
+            onConfettiComplete={handleConfettiComplete}
+          />
+        </div>
       )}
     </div>
   );
