@@ -50,3 +50,7 @@ git clone https://github.com/AerrowV/ultimate-bravery-frontend.git
 cd ultimate-bravery-frontend
 npm install
 npm run dev
+```
+---
+
+
